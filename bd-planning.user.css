@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         B&D Werkplaatsplanning
 @namespace    bdprocess-pvl
-@version      1.0.7
+@version      1.0.8
 @description  Centrale opmaak voor de B&D werkplaatsplanning
 @author       B&D Process Equipment
 @updateURL    https://raw.githubusercontent.com/websitebeheerbd-ship-it/bd-pvl-stylus/main/bd-planning.user.css
@@ -126,7 +126,7 @@
 
     .calendar-grid .card-item-container {
         background: #ffffff !important;
-        border: 10px solid green !important; /*#cbd5e1*/
+        border: 10px solid orange !important; /*#cbd5e1*/
         border-radius: 7px !important;
         box-shadow: 0 1px 3px rgba(0,0,0,.07) !important;
         min-height: 65px !important;
