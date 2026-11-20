@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         B&D Werkplaatsplanning
 @namespace    bdprocess-pvl
-@version      1.0.1
+@version      1.0.2
 @description  Centrale opmaak voor de B&D werkplaatsplanning
 @author       B&D Process Equipment
 ==/UserStyle== */
@@ -11,6 +11,6 @@
     .avatar-canvas-round .avatar-canvas-img[data-v-92e83179],
     .avatar-canvas-round .avatar-canvas-img-lg[data-v-92e83179],
     .avatar-canvas-round[data-v-92e83179] {
-        border-radius: 30% !important;
+        border-radius: 3% !important;
     }
 }
