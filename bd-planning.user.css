@@ -1,9 +1,10 @@
 /* ==UserStyle==
 @name         B&D Werkplaatsplanning
 @namespace    bdprocess-pvl
-@version      1.0.2
+@version      1.0.3
 @description  Centrale opmaak voor de B&D werkplaatsplanning
 @author       B&D Process Equipment
+@updateURL    https://raw.githubusercontent.com/websitebeheerbd-ship-it/bd-pvl-stylus/main/bd-planning.user.css
 ==/UserStyle== */
 
 @-moz-document domain("vplan.com") {
