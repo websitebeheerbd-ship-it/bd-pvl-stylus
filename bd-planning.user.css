@@ -1,0 +1,16 @@
+/* ==UserStyle==
+@name         B&D Werkplaatsplanning
+@namespace    bdprocess-pvl
+@version      1.0.0
+@description  Centrale opmaak voor de B&D werkplaatsplanning
+@author       B&D Process Equipment
+==/UserStyle== */
+
+@-moz-document domain("pvlan.com") {
+    .avatar-canvas-round .avatar-canvas-text[data-v-92e83179],
+    .avatar-canvas-round .avatar-canvas-img[data-v-92e83179],
+    .avatar-canvas-round .avatar-canvas-img-lg[data-v-92e83179],
+    .avatar-canvas-round[data-v-92e83179] {
+        border-radius: 2% !important;
+    }
+}
