@@ -1,84 +1,419 @@
+
+/* ==UserStyle==
+@name         B&D Werkplaatsplanning
+@namespace    bdprocess-pvl
+@version      1.0.16
+@description  Centrale opmaak voor de B&D werkplaatsplanning
+@author       B&D Process Equipment
+@updateURL    https://raw.githubusercontent.com/websitebeheerbd-ship-it/bd-pvl-stylus/main/bd-planning.user.css
+==/UserStyle== */
+
+@-moz-document domain("vplan.com") {
+
+    /* 1. Menu's en balken verbergen */
+
+    .app-content > .topbar-wrapper,
+    .app-wrapper > .sidebar-wrapper,
+    .planboard-layout .navigation-container,
+    .planboard-grow > .planboard-menu {
+        display: none !important;
+    }
+
+    /* 2. Volledige breedte */
+
+    .app-container,
+    .app-content,
+    .app-wrapper,
+    .app-main,
+    .planboard-split,
+    .planboard-layout,
+    .planboard-grow,
+    .planboard-scroll {
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0 !important;
+    }
+
+    .app-main {
+        flex: 1 1 100% !important;
+        margin: 0 !important;
         padding: 0 !important;
+    }
+
+    .app-wrapper {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 3. Planning */
+
+    .calendar-grid {
+        width: 100% !important;
+        min-width: 0 !important;
+        background: #f1f4f8 !important;
+    }
+
+    .calendar-grid .grid-header {
+        background: #e6ecf5 !important;
+    }
+
+    .calendar-grid .cell {
+        border-color: #cbd5e1 !important;
+    }
+
+    /* 4. Medewerkers en profielfoto's */
+
+    .grid-header .dimension-text {
+        font-size: 23px !important;
+        font-weight: 800 !important;
+        color: #142747 !important;
+        line-height: 1.3 !important;
+    }
+
+    .grid-header .avatar-container,
+    .grid-header .avatar-canvas-round,
+    .grid-header .avatar-canvas-round .avatar-canvas-img,
+    .grid-header .avatar-canvas-round .avatar-canvas-text {
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
+        border-radius: 50% !important;
+        overflow: hidden !important;
+    }
+
+    .grid-header .avatar-canvas-round img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 50% !important;
+    }
+
+    .grid-header .avatar-canvas-text {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* 5. Dagnummers centreren */
+
+    .day-container {
+        text-align: center !important;
+    }
+
+    .day-container .date {
+        display: grid !important;
+        place-items: center !important;
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        margin: 3px auto 1px !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        border-radius: 50% !important;
+        font-size: 33px !important;
+        font-weight: 900 !important;
+        line-height: 1 !important;
+        text-align: center !important;
+    }
+
+    .day-container.today .date {
+        color: #ffffff !important;
+    }
+
+    .day-container .day-name {
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        color: #475569 !important;
+    }
+
+    .day-container .month-name {
+        font-size: 14px !important;
+        color: #64748b !important;
+    }
+
+    /* 6. Weeknummer vergroten */
+
+    .day-container .margin-top-x1 {
+        margin-top: 2px !important;
+    }
+
+    .day-container .margin-top-x1 button.tag {
+        font-size: 15px !important;
+        font-weight: 800 !important;
+        min-height: 25px !important;
+        padding: 3px 5px !important;
+        line-height: 1.1 !important;
+        border-radius: 15px !important;
+    }
+
+    .day-container .margin-top-x1 button.tag span {
+        font-size: inherit !important;
+        font-weight: inherit !important;
+    }
+
+    /* 7. Compactere werkbonkaarten */
+
+    .calendar-grid .card-list {
+        padding: 3px 5px !important;
+    }
+
+    .calendar-grid .card-list > li {
+        margin-bottom: 3px !important;
+    }
+
+    .calendar-grid .card-list > li:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    .calendar-grid .card-item-container {
+        --bd-priority-border: #cbd5e1;
+
+        position: relative !important;
+        background: #ffffff !important;
+        border: 3px solid var(--bd-priority-border) !important;
+        border-radius: 6px !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,.07) !important;
+        box-sizing: border-box !important;
+        min-height: 48px !important;
+        padding: 5px 27px 5px 8px !important;
+        color: #17243d !important;
+
+        container-type: inline-size;
+    }
+
+    /* 8. Randkleur volgens prioriteitslabel */
+
+    /* Prio Normaal */
+    .calendar-grid
+    .card-item-container:has(.tag.color.multitone.orange) {
+        --bd-priority-border: var(--orange-color, #f59e0b);
+    }
+
+    /* Prio Hoog - vPlan gebruikt ruby */
+    .calendar-grid
+    .card-item-container:has(.tag.color.multitone.ruby) {
+        --bd-priority-border: var(--ruby-color, #e11d48);
+    }
+
+    .calendar-grid
+    .card-item-container:has(.tag.color.multitone.red) {
+        --bd-priority-border: var(--red-color, #ef4444);
+    }
+
+    .calendar-grid
+    .card-item-container:has(.tag.color.multitone.pink) {
+        --bd-priority-border: var(--pink-color, #ec4899);
+    }
+
+    /* Prio Laag */
+    .calendar-grid
+    .card-item-container:has(.tag.color.multitone.green) {
+        --bd-priority-border: var(--green-color, #22c55e);
+    }
+
+    .calendar-grid
+    .card-item-container:has(.tag.color.multitone.blue) {
+        --bd-priority-border: var(--blue-color, #3b82f6);
+    }
+
+    .calendar-grid
+    .card-item-container:has(.tag.color.multitone.yellow) {
+        --bd-priority-border: var(--yellow-color, #eab308);
+    }
+
+    .calendar-grid
+    .card-item-container:has(.tag.color.multitone.purple) {
+        --bd-priority-border: var(--purple-color, #a855f7);
+    }
+
+    .calendar-grid
+    .card-item-container:has(.tag.color.multitone.navy) {
+        --bd-priority-border: var(--navy-color, #1e3a8a);
+    }
+
+    /* 9. Prioriteitslabels verbergen */
+
+    /*
+       De labels blijven in de HTML aanwezig,
+       zodat de randkleur nog bepaald wordt.
+    */
+
+    .calendar-grid
+    .card-item-wrapper > div:has(.tag-group),
+    .calendar-grid
+    .card-item-wrapper .tag-group {
+        display: none !important;
+    }
+
+    /* 10. Werkbonnummer links, datum rechts */
+
+    /*
+       Flex voorkomt dat beide teksten
+       over elkaar heen komen.
+
+       Bij te weinig ruimte kan de datum
+       rechts op een tweede regel komen.
+    */
+
+    .calendar-grid .card-item-wrapper {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 1px 5px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Werkbonnummer */
+
+    .calendar-grid
+    .card-item-wrapper > div:has(> h1) {
+        flex: 0 0 auto !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .calendar-grid .card-item-wrapper h1 {
+        font-size: 24px !important;
+        font-weight: 900 !important;
+        line-height: 1.08 !important;
+        color: #132b57 !important;
+
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Datum rechts */
+
+    .calendar-grid
+    .card-item-wrapper > h3 {
+        display: flex !important;
+        flex: 0 0 auto !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 3px !important;
+
+        max-width: 100% !important;
+        margin: 0 0 0 auto !important;
+        padding: 0 !important;
+
         font-size: 17px !important;
         font-weight: 700 !important;
         line-height: 1.15 !important;
         letter-spacing: -.2px !important;
+
         white-space: nowrap !important;
         text-align: right !important;
         overflow: visible !important;
         text-overflow: clip !important;
     }
 
-    .calendar-grid .card-item-wrapper > h3 span {
+    .calendar-grid
+    .card-item-wrapper > h3 span {
         font-size: inherit !important;
         font-weight: inherit !important;
         white-space: nowrap !important;
     }
 
-    .calendar-grid .card-item-wrapper > h3 i {
+    .calendar-grid
+    .card-item-wrapper > h3 i {
         font-size: 13px !important;
         flex-shrink: 0 !important;
     }
 
-    /* Bij brede kaarten is er ruimte voor de gewenste +50% datumgrootte. */
+    /* Grotere datums op kaarten vanaf 320px breed */
+
     @container (min-width: 320px) {
         .card-item-wrapper > h3 {
             font-size: 25.5px !important;
         }
     }
 
-    .calendar-grid .card-item-wrapper > h3.red,
-    .calendar-grid .card-item-wrapper > h3.red span {
+    /* Verlopen datums blijven rood */
+
+    .calendar-grid
+    .card-item-wrapper > h3.red,
+    .calendar-grid
+    .card-item-wrapper > h3.red span {
         color: #c62828 !important;
         font-weight: 800 !important;
     }
 
-    /* 11. Echte grote statusdriehoek, geen geschaald vierkant */
-    .calendar-grid .card-item-container .status {
+    /* 11. Statusdriehoekjes 3x groter */
+
+    /*
+       Niet schalen met transform.
+       Zelf driehoekvorm maken met clip-path.
+    */
+
+    .calendar-grid
+    .card-item-container .status {
         position: absolute !important;
         top: 0 !important;
         right: 0 !important;
+
         width: 26px !important;
         height: 26px !important;
+
         margin: 0 !important;
         padding: 0 !important;
+
         overflow: visible !important;
-        opacity: 1 !important;
         visibility: visible !important;
+        opacity: 1 !important;
+
         z-index: 2 !important;
         pointer-events: none !important;
     }
 
-    .calendar-grid .card-item-container .status .triangle {
+    .calendar-grid
+    .card-item-container .status .triangle {
         display: block !important;
         position: absolute !important;
+
         top: 0 !important;
         right: 0 !important;
+
         width: 26px !important;
         height: 26px !important;
         min-width: 26px !important;
         min-height: 26px !important;
+
         margin: 0 !important;
         padding: 0 !important;
+
         border: 0 !important;
         border-radius: 0 !important;
         transform: none !important;
-        clip-path: polygon(0 0, 100% 0, 100% 100%) !important;
-        opacity: 1 !important;
+
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 100%
+        ) !important;
+
         visibility: visible !important;
+        opacity: 1 !important;
         pointer-events: none !important;
     }
 
     /* 12. Afwezigheid */
-    .dimension-day-header .dimension-deviation {
+
+    .dimension-day-header
+    .dimension-deviation {
         font-size: 16px !important;
         font-weight: 700 !important;
     }
 
-    /* 13. Grotere namen/foto's op brede schermen.
-           Kaartteksten niet verder vergroten: vPlan gebruikt
-           hier zes kolommen van slechts 240px breed. */
+    /* 13. Extra grote schermen */
+
     @media (min-width: 1900px) {
+
         .grid-header .dimension-text {
             font-size: 27px !important;
         }
@@ -97,10 +432,15 @@
             width: 48px !important;
             height: 48px !important;
         }
+
+        /* Kaarttekst niet extra vergroten.
+           De zes kolommen zijn maar 240px breed. */
     }
 
-    /* 14. Smalle schermen */
+    /* 14. Smallere schermen */
+
     @media (max-width: 1200px) {
+
         .grid-header .dimension-text {
             font-size: 20px !important;
         }
@@ -114,3 +454,4 @@
         }
     }
 }
+
