@@ -1,14 +1,16 @@
+
 /* ==UserStyle==
 @name         B&D Werkplaatsplanning
 @namespace    bdprocess-pvl
-@version      1.0.14
+@version      1.0.15
 @description  Centrale opmaak voor de B&D werkplaatsplanning
 @author       B&D Process Equipment
 @updateURL    https://raw.githubusercontent.com/websitebeheerbd-ship-it/bd-pvl-stylus/main/bd-planning.user.css
 ==/UserStyle== */
 
 @-moz-document domain("vplan.com") {
-/* =====================================
+
+    /* =====================================
        1. MENU'S EN BALKEN VERBERGEN
        ===================================== */
 
@@ -66,7 +68,7 @@
     }
 
     /* =====================================
-       4. MEDEWERKERS
+       4. MEDEWERKERS EN PROFIELFOTO'S
        ===================================== */
 
     .grid-header .dimension-text {
@@ -75,30 +77,59 @@
         color: #142747 !important;
         line-height: 1.3 !important;
     }
-    .avatar-canvas-round .avatar-canvas-img img{
-      border-radius: 50% !important;     
-    }
 
-    .grid-header .avatar-canvas-round {
-        border-radius: 50% !important;
-    }
+    /* Profielfoto's vergroten */
 
+    .grid-header .avatar-container,
+    .grid-header .avatar-canvas-round,
     .grid-header .avatar-canvas-round
     .avatar-canvas-img,
     .grid-header .avatar-canvas-round
     .avatar-canvas-text {
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
         border-radius: 50% !important;
+    }
+
+    .grid-header .avatar-canvas-round img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 50% !important;
+    }
+
+    .grid-header .avatar-canvas-text {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     /* =====================================
        5. DAGEN EN DATUMS
        ===================================== */
 
+    /* Dagnummer perfect centreren */
+
     .day-container .date {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+
+        margin: 3px auto 1px auto !important;
+        padding: 0 !important;
+
         font-size: 33px !important;
         font-weight: 900 !important;
-        color: #142747 !important;
-        line-height: 1.15 !important;
+        line-height: 1 !important;
+
+        text-align: center !important;
+        box-sizing: border-box !important;
+        border-radius: 50% !important;
     }
 
     .day-container .day-name {
@@ -113,54 +144,289 @@
     }
 
     /* =====================================
-       6. WERKBONKAARTEN
+       6. WEEKNUMMER VERGROTEN
        ===================================== */
 
+    .day-container .margin-top-x1 {
+        margin-top: 2px !important;
+    }
+
+    .day-container .margin-top-x1
+    button.tag {
+        font-size: 16px !important;
+        font-weight: 800 !important;
+
+        min-height: 28px !important;
+        padding: 3px 6px !important;
+
+        line-height: 1.1 !important;
+        border-radius: 14px !important;
+    }
+
+    .day-container .margin-top-x1
+    button.tag span {
+        font-size: inherit !important;
+        font-weight: inherit !important;
+    }
+
+    /* =====================================
+       7. COMPACTERE WERKBONKAARTEN
+       ===================================== */
+
+    /* Minder marge rond kaarten */
+
     .calendar-grid .card-list {
-        padding: 5px !important;
+        padding: 3px 5px !important;
     }
 
     .calendar-grid .card-list > li {
-        margin-bottom: 6px !important;
+        margin-bottom: 3px !important;
     }
 
+    .calendar-grid .card-list > li:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    /* Basiskaart */
+
     .calendar-grid .card-item-container {
+        --bd-priority-border: #cbd5e1;
+
         background: #ffffff !important;
-        border: 5px solid green !important; /*#cbd5e1*/
-        border-radius: 7px !important;
-        box-shadow: 0 1px 3px rgba(0,0,0,.07) !important;
-        min-height: 65px !important;
-        padding: 8px 11px !important;
+
+        border: 3px solid
+            var(--bd-priority-border) !important;
+
+        border-radius: 6px !important;
+
+        box-shadow:
+            0 1px 3px rgba(0,0,0,.07) !important;
+
+        min-height: 50px !important;
+        padding: 5px 8px !important;
+
         color: #17243d !important;
+        box-sizing: border-box !important;
+    }
+
+    /* =====================================
+       8. RANDKLEUR VOLGENS PRIORITEIT
+       ===================================== */
+
+    /*
+       De rand krijgt dezelfde kleur als het
+       aanwezige prioriteitslabel.
+
+       Let op:
+       Het label moet in de HTML van deze
+       kaart aanwezig zijn.
+
+       Zonder label blijft de rand grijs.
+    */
+
+    /* Prio Normaal - Oranje */
+
+    .calendar-grid
+    .card-item-container:has(
+        .tag.color.multitone.orange
+    ) {
+        --bd-priority-border:
+            var(--orange-color, #f59e0b);
+    }
+
+    /* Prio Hoog - Rood */
+
+    .calendar-grid
+    .card-item-container:has(
+        .tag.color.multitone.red
+    ) {
+        --bd-priority-border:
+            var(--red-color, #ef4444);
+    }
+
+    /* Eventuele roze prioriteit */
+
+    .calendar-grid
+    .card-item-container:has(
+        .tag.color.multitone.pink
+    ) {
+        --bd-priority-border:
+            var(--pink-color, #ec4899);
+    }
+
+    /* Overige mogelijke labelkleuren */
+
+    .calendar-grid
+    .card-item-container:has(
+        .tag.color.multitone.green
+    ) {
+        --bd-priority-border:
+            var(--green-color, #22c55e);
+    }
+
+    .calendar-grid
+    .card-item-container:has(
+        .tag.color.multitone.blue
+    ) {
+        --bd-priority-border:
+            var(--blue-color, #3b82f6);
+    }
+
+    .calendar-grid
+    .card-item-container:has(
+        .tag.color.multitone.yellow
+    ) {
+        --bd-priority-border:
+            var(--yellow-color, #eab308);
+    }
+
+    .calendar-grid
+    .card-item-container:has(
+        .tag.color.multitone.purple
+    ) {
+        --bd-priority-border:
+            var(--purple-color, #a855f7);
+    }
+
+    .calendar-grid
+    .card-item-container:has(
+        .tag.color.multitone.navy
+    ) {
+        --bd-priority-border:
+            var(--navy-color, #1e3a8a);
+    }
+
+    /* =====================================
+       9. NUMMER LINKS, DATUM RECHTS
+       ===================================== */
+
+    /*
+       Werkbonnummer en datum komen naast
+       elkaar in dezelfde horizontale rij.
+    */
+
+    .calendar-grid .card-item-wrapper {
+        display: grid !important;
+
+        grid-template-columns:
+            minmax(0, 1fr) max-content !important;
+
+        align-items: center !important;
+        column-gap: 6px !important;
+        row-gap: 2px !important;
+
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Container met werkbonnummer */
+
+    .calendar-grid
+    .card-item-wrapper > div:has(> h1) {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+        min-width: 0 !important;
     }
 
     /* Werkbonnummer */
 
-    .calendar-grid .card-item-wrapper h1 {
+    .calendar-grid
+    .card-item-wrapper h1 {
         font-size: 26px !important;
         font-weight: 900 !important;
-        line-height: 1.2 !important;
+        line-height: 1.1 !important;
+
         color: #132b57 !important;
-        margin-bottom: 5px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* Datum van de werkbon */
+    /* Datum rechts naast werkbonnummer */
 
-    .calendar-grid .card-item-wrapper h3 {
-        font-size: 17px !important;
-        font-weight: 600 !important;
-        line-height: 1.3 !important;
+    .calendar-grid
+    .card-item-wrapper > h3 {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+
+        justify-self: end !important;
+        align-self: center !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+
+        gap: 4px !important;
+
+        font-size: 25.5px !important;
+        font-weight: 700 !important;
+        line-height: 1.1 !important;
+
+        white-space: nowrap !important;
+        text-align: right !important;
+
+        margin: 0 !important;
+        padding: 0 25px 0 0 !important;
+    }
+
+    .calendar-grid
+    .card-item-wrapper > h3 span {
+        font-size: inherit !important;
+        font-weight: inherit !important;
+        white-space: nowrap !important;
+    }
+
+    .calendar-grid
+    .card-item-wrapper > h3 i {
+        font-size: 16px !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Labels indien aanwezig op tweede rij */
+
+    .calendar-grid
+    .card-item-wrapper > div:has(.tag-group) {
+        grid-column: 1 / -1 !important;
+    }
+
+    .calendar-grid
+    .card-item-wrapper .tag-group {
+        margin-top: 2px !important;
     }
 
     /* Verlopen datums blijven rood */
 
-    .calendar-grid .card-item-wrapper h3.red {
+    .calendar-grid
+    .card-item-wrapper > h3.red,
+    .calendar-grid
+    .card-item-wrapper > h3.red span {
         color: #c62828 !important;
         font-weight: 800 !important;
     }
 
     /* =====================================
-       7. AFWEZIGHEID
+       10. STATUSDRIEHOEKJES 3X GROTER
+       ===================================== */
+
+    .calendar-grid
+    .card-item-container .status,
+    .calendar-grid
+    .card-item-container .triangle {
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .calendar-grid
+    .card-item-container .status .triangle {
+        transform: scale(3) !important;
+        transform-origin: top right !important;
+
+        z-index: 1 !important;
+        pointer-events: none !important;
+    }
+
+    /* =====================================
+       11. AFWEZIGHEID
        ===================================== */
 
     .dimension-day-header
@@ -170,38 +436,83 @@
     }
 
     /* =====================================
-       8. STATUSKLEUREN BEHOUDEN
-       ===================================== */
-
-    .card-item-container .status,
-    .card-item-container .triangle {
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
-
-    /* =====================================
-       9. EXTRA GROOT SCHERM
+       12. EXTRA GROOT SCHERM
        ===================================== */
 
     @media (min-width: 1900px) {
 
+        /* Medewerkers */
+
         .grid-header .dimension-text {
             font-size: 27px !important;
         }
+
+        /* Grotere profielfoto's */
+
+        .grid-header .avatar-container,
+        .grid-header .avatar-canvas-round,
+        .grid-header .avatar-canvas-round
+        .avatar-canvas-img,
+        .grid-header .avatar-canvas-round
+        .avatar-canvas-text {
+            width: 54px !important;
+            height: 54px !important;
+            min-width: 54px !important;
+        }
+
+        /* Werkbonnummer */
 
         .calendar-grid
         .card-item-wrapper h1 {
             font-size: 30px !important;
         }
 
+        /* Datum 50% groter dan oude 19px */
+
         .calendar-grid
-        .card-item-wrapper h3 {
-            font-size: 19px !important;
+        .card-item-wrapper > h3 {
+            font-size: 28.5px !important;
         }
+
+        /* Dagnummer */
 
         .day-container .date {
             font-size: 38px !important;
+            width: 48px !important;
+            height: 48px !important;
+        }
+
+        /* Weeknummer */
+
+        .day-container
+        .margin-top-x1 button.tag {
+            font-size: 17px !important;
         }
 
     }
+
+    /* =====================================
+       13. SMALLERE SCHERMEN
+       ===================================== */
+
+    @media (max-width: 1200px) {
+
+        .calendar-grid
+        .card-item-wrapper h1 {
+            font-size: 22px !important;
+        }
+
+        .calendar-grid
+        .card-item-wrapper > h3 {
+            font-size: 19px !important;
+            padding-right: 20px !important;
+        }
+
+        .grid-header .dimension-text {
+            font-size: 20px !important;
+        }
+
+    }
+
 }
+
