@@ -2,19 +2,17 @@
 /* ==UserStyle==
 @name         B&D Werkplaatsplanning
 @namespace    bdprocess-pvl
-@version      1.0.18
+@version      1.0.19
 @description  Centrale opmaak voor de B&D werkplaatsplanning
 @author       B&D Process Equipment
 @updateURL    https://raw.githubusercontent.com/websitebeheerbd-ship-it/bd-pvl-stylus/main/bd-planning.user.css
 ==/UserStyle== */
 
-@-moz-document domain("vplan.com") 
+@-moz-document domain("vplan.com") {
 
 /*Debug*/
-#bd-autocss-debug-panel{
-    display:none;}
-
-{
+    #bd-autocss-debug-panel
+    {display:none;}
 
     /* 1. Menu's en balken verbergen */
 
