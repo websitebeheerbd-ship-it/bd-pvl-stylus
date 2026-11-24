@@ -2,7 +2,7 @@
 /* ==UserStyle==
 @name         B&D Werkplaatsplanning
 @namespace    bdprocess-pvl
-@version      1.0.21
+@version      1.0.22
 @description  Centrale opmaak voor de B&D werkplaatsplanning
 @author       B&D Process Equipment
 @updateURL    https://raw.githubusercontent.com/websitebeheerbd-ship-it/bd-pvl-stylus/main/bd-planning.user.css
@@ -174,7 +174,7 @@
 
         position: relative !important;
         background: #ffffff !important;
-        border: 20px solid var(--bd-priority-border) !important;
+        border: 3px solid var(--bd-priority-border) !important;
         border-radius: 6px !important;
         box-shadow: 0 1px 3px rgba(0,0,0,.07) !important;
         box-sizing: border-box !important;
