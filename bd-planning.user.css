@@ -548,8 +548,5 @@
 .calendar-grid .card-item-container:has(.status .triangle.green) {
     background-color: #E2F5E5 !important;
 }
-.card-item-container.between{
-    opacity: 1;
-}
 }
 
