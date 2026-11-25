@@ -2,7 +2,7 @@
 /* ==UserStyle==
 @name         B&D Werkplaatsplanning
 @namespace    bdprocess-pvl
-@version      1.0.22
+@version      1.0.23
 @description  Centrale opmaak voor de B&D werkplaatsplanning
 @author       B&D Process Equipment
 @updateURL    https://raw.githubusercontent.com/websitebeheerbd-ship-it/bd-pvl-stylus/main/bd-planning.user.css
@@ -541,6 +541,12 @@
 .calendar-grid .card-item-wrapper > div:has(.tag-group) {
     display: none !important;
 }
+/* =====================================
+   AFGERONDE WERKBONNEN LICHTGROEN
+   ===================================== */
 
+.calendar-grid .card-item-container:has(.status .triangle.green) {
+    background-color: #E2F5E5 !important;
+}
 }
 
