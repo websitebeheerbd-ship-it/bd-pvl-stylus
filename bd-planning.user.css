@@ -2,7 +2,7 @@
 /* ==UserStyle==
 @name         B&D Werkplaatsplanning
 @namespace    bdprocess-pvl
-@version      1.0.24
+@version      1.0.25
 @description  Centrale opmaak voor de B&D werkplaatsplanning
 @author       B&D Process Equipment
 @updateURL    https://raw.githubusercontent.com/websitebeheerbd-ship-it/bd-pvl-stylus/main/bd-planning.user.css
@@ -547,6 +547,27 @@
 
 .calendar-grid .card-item-container:has(.status .triangle.green) {
     background-color: #E2F5E5 !important;
+}
+    }
+
+/* Werkbonnummers zwart */
+.calendar-grid .card-item-wrapper h1 {
+    color: #111111 !important;
+    opacity: 1 !important;
+}
+
+/* Datums zwart, behalve verlopen datums */
+.calendar-grid .card-item-wrapper > h3:not(.red),
+.calendar-grid .card-item-wrapper > h3:not(.red) span {
+    color: #111111 !important;
+    opacity: 1 !important;
+}
+
+/* Verlopen datums rood houden */
+.calendar-grid .card-item-wrapper > h3.red,
+.calendar-grid .card-item-wrapper > h3.red span {
+    color: #c62828 !important;
+    opacity: 1 !important;
 }
 }
 
