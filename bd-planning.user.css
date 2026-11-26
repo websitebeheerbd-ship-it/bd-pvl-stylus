@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         B&D Werkplaatsplanning
 @namespace    bdprocess-pvl
-@version      1.0.28
+@version      1.0.29
 @description  Centrale opmaak voor de B&D werkplaatsplanning
 @author       B&D Process Equipment
 @updateURL    https://raw.githubusercontent.com/websitebeheerbd-ship-it/bd-pvl-stylus/main/bd-planning.user.css
@@ -422,7 +422,10 @@
     max-width: calc(100% - 145px) !important;
     min-width: 0 !important;
 }
-
+/* Minder ruimte tussen de werkbonkaarten */
+.calendar-grid .dimension-wrapper .card-list {
+    gap: 4px !important;
+}
 }
 
 
